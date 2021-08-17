@@ -1,20 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {Logo, Button} from '@customink/pigment-react';
+import Header from './Header';
+import {Button} from '@customink/pigment-react';
 
 import './styles/index.scss';
 
 const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <Logo
-          variant={'inky'}
-          height={'100px'}
-          onClick={() => {}}
-          className="App-logo"
-        />
-      </header>
+      <Header />
       <div>
         <Button
           onClick={() => {
@@ -27,5 +20,5 @@ const App = () => {
     </div>
   );
 };
-const mountNode = document.querySelector('#root');
-ReactDOM.render(<App />, mountNode);
+
+export default App;

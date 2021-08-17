@@ -1,4 +1,7 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
+const path = require('path');
+const deps = require('./package.json').dependencies;
 
 let mode = 'development';
 let target = 'web';
@@ -11,7 +14,9 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   mode: mode,
   target: target,
-  entry: './src/app.tsx',
+  entry: {
+    main: './src/index.tsx'
+  },
   module: {
     rules: [
       {
@@ -61,13 +66,39 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+
   plugins: [
+    new ModuleFederationPlugin({
+      name: 'ci_modular_header',
+      library: { type: 'var', name: 'ci_modular_header' },
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Header': './src/Header'
+      },
+      shared: { 
+        react: { 
+          singleton: true,
+          eager: true, 
+          requiredVersion: deps.react
+        }, 
+        'react-dom': { 
+          singleton: true,
+          eager: true,
+          requiredVersion: deps['react-dom']
+        }
+      }
+    }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'
     })
   ],
-  devServer: {
-    hot: true
-  }
+  devServer: { contentBase: path.join(__dirname, 'dist'), port: 3000, hot: true }
 };
