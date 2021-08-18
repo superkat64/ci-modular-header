@@ -15,37 +15,37 @@ const deps = require("./package.json").dependencies;
 const path = require("path");
 
 module.exports = {
-    // Still figuring out why these are necessary but I think it has to do with resolving the typescript files
-    resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
-    },
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
-    },
-    plugins: [
-        new ModuleFederationPlugin({
-            name: [application_name],
-            library: { type: 'var', name: [application_name] },
-            remotes: {
-                // Will need to replace localhost:3000 with wherever this application is being hosted
-                ci_modular_header: 'ci_modular_header@http://localhost:3000/remoteEntry.js',
-            },
-            shared: {
-                // Specifies which dependencies shouldn't be loaded more than once on the page
-                react: { 
-                singleton: true,
-                eager: true, 
-                requiredVersion: deps.react
-                }, 
-                'react-dom': { 
-                singleton: true,
-                eager: true,
-                requiredVersion: deps['react-dom']
-                }
-            }
-        })
-    ]
+  // Still figuring out why these are necessary but I think it has to do with resolving the typescript files
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  plugins: [
+    new ModuleFederationPlugin({
+      name: [application_name],
+      library: { type: 'var', name: [application_name] },
+      remotes: {
+        // Will need to replace localhost:3000 with wherever this application is being hosted
+        ci_modular_header: 'ci_modular_header@http://localhost:3000/remoteEntry.js',
+      },
+      shared: {
+        // Specifies which dependencies shouldn't be loaded more than once on the page
+        react: { 
+          singleton: true,
+          eager: true, 
+          requiredVersion: deps.react
+          }, 
+          'react-dom': { 
+          singleton: true,
+          eager: true,
+          requiredVersion: deps['react-dom']
+        }
+      }
+    })
+  ]
 }
 ```
 
