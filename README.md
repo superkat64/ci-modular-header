@@ -1,6 +1,8 @@
 # Modular Header
 This application exposes a micro frontend header component that can be dynamically imported through Webpack 5's [ModuleFederationPlugin](https://webpack.js.org/plugins/module-federation-plugin/) and rendered in other SPAs at runtime.
 
+![Header Preview](doc/header_preview.png)
+
 ### Micro Frontends
 Micro-frontend architrcture is a design approach in which a front-end application is decomposed into individual, semi-independent "microapps" working loosely together. In the context of SPAs, they are like a sliced up version of your SPA, it still looks and feels like an SPA to the user, but under the hood it dynamically loads parts of the application based on the user's flow.
 
