@@ -8,15 +8,6 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <div>
-        <Button
-          onClick={() => {
-            window.location.href = 'https://reactjs.org';
-          }}
-          variant="primary">
-          Learn React
-        </Button>
-      </div>
     </div>
   );
 };

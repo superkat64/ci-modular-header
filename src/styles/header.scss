@@ -1,0 +1,165 @@
+body, html {
+	font-size: 16px;
+  font-weight: 300;
+	font-family: sharpsans, helvetica, arial, Trebuchet MS, sans-serif;
+	color: #4a4a4a;
+}
+
+a {
+	text-decoration: none;
+	color: #1f51cf;
+}
+
+.ndx {
+	&-InkyHeader_Lg {
+		background: #fff;
+		padding: 0;
+		flex-shrink: 0;
+		transition: 300ms filter;
+		filter: brightness(100%);
+		justify-content: space-between;
+
+		&-wrapper {
+			z-index: 2;
+		}
+
+		&--welcome {
+			z-index: 1;
+		}
+		
+		&-main {
+			height: 100%;
+			display: flex;
+			align-items: center;
+			flex-grow: 1;
+			justify-content: flex-start;
+			position: relative;
+
+			&::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				border-left: 1px solid #b7b7b7;
+			}
+		}
+
+		&-options {
+			align-items: center;
+			display: flex;
+			flex-shrink: 0;
+			height: 100%;
+			justify-content: flex-end;
+		}
+	}
+
+	&-Menu {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		text-align: center;
+
+		svg {
+			margin: 0 auto;
+		}
+	}
+
+	&-MainMenuButton {
+		cursor: pointer;
+		height: 1.5rem;
+		margin: .5rem 1rem;
+		position: relative;
+		width: 1.5rem;
+
+		&-top-bun, 
+		&-meat, 
+		&-bottom-bun {
+			background-color: #4a4a4a;
+			border-radius: .1rem;
+			height: .2rem;
+			left: 0;
+			position: absolute;
+			opacity: 1;
+			top: 0;
+			transform-origin: center center;
+			transition: opacity 0s 0s,transform .15s 0s,-webkit-transform .15s 0s;
+			width: 1.6rem;
+		}
+
+		&-meat {
+			top: 6px;
+		}
+
+		&-bottom-bun {
+			top: 12px;
+		}
+
+		&-text {
+			bottom: -.3rem;
+			font-size: .579rem;
+			left: 0;
+			position: absolute;
+			text-align: center;
+			text-transform: capitalize;
+		}
+	}
+
+	&-Logo {
+		height: 2.6rem;
+		margin-left: 1rem;
+	}
+
+	&-Ttarp {
+		display: flex;
+
+		&-section {
+			display: flex;
+		}
+
+		&-talkSection {
+			margin-right: 1rem;
+			height: 3.5rem;
+		}
+
+		&-icon {
+			background-image: url(../assets/headphones.svg);
+			height: 52px;
+			width: 52px;
+			align-self: center;
+		}
+		
+		&-textWrapper {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		&-text {
+			text-transform: uppercase;
+			font-size: .694rem;
+		}
+
+		&-cta {
+			margin-right: .25rem;
+			color: #fa3c00;
+			font-size: .833rem;
+			text-align: left;
+		}
+
+		&-chatContainer {
+			padding: 0 1rem 0 .5rem;
+			display: flex;
+			align-self: flex-end;
+			height: 2.5rem;
+			margin-top: .5rem;
+			border-left: 1px solid #b7b7b7;
+		}
+	}
+
+	&-TtarpRebrand-icon {
+		background-image: url(../assets/chat.svg);
+	}
+}
+
+
