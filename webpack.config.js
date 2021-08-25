@@ -76,7 +76,6 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'ci_modular_header',
-      library: { type: 'var', name: 'ci_modular_header' },
       filename: 'remoteEntry.js',
       exposes: {
         './Header': './src/Header'
@@ -91,7 +90,7 @@ module.exports = {
           singleton: true,
           eager: true,
           requiredVersion: deps['react-dom']
-        }
+        },
       }
     }),
     new HtmlWebPackPlugin({
